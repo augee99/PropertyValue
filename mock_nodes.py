@@ -36,8 +36,14 @@ def mock_property_data_collection_node(state: PropertyValuationState) -> Propert
     # Update state
     state['current_step'] = "property_data_collected"
     if data_completeness == "INCOMPLETE":
+        # Ensure errors list exists
+        if 'errors' not in state:
+            state['errors'] = []
         state['errors'].append(f"Insufficient property data: missing {missing_fields}")
     elif data_completeness == "PARTIAL":
+        # Ensure warnings list exists
+        if 'warnings' not in state:
+            state['warnings'] = []
         state['warnings'].append(f"Some property data missing: {missing_fields}")
     
     return state
