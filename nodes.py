@@ -3,7 +3,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 import json
 import random
-from state import PropertyValuationState
+from .state import PropertyValuationState
 
 # Load environment variables from .env file
 try:

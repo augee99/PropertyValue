@@ -6,7 +6,7 @@ Used for testing and demonstration purposes
 from typing import Dict, Any, List
 import random
 import json
-from state import PropertyValuationState
+from .state import PropertyValuationState
 
 def mock_property_data_collection_node(state: PropertyValuationState) -> PropertyValuationState:
     """Mock Node 1: Collect and validate property data"""

@@ -1,7 +1,7 @@
 from langgraph.graph import StateGraph, END
-from state import PropertyValuationState
-from configuration import PropertyValuationConfiguration
-from nodes import (
+from .state import PropertyValuationState
+from .configuration import PropertyValuationConfiguration
+from .nodes import (
     property_data_collection_node,
     comparable_properties_node,
     market_analysis_node,

@@ -4,8 +4,8 @@ Used for testing and demonstration without requiring API credentials
 """
 
 from langgraph.graph import StateGraph, END
-from state import PropertyValuationState
-from mock_nodes import (
+from .state import PropertyValuationState
+from .mock_nodes import (
     mock_property_data_collection_node,
     mock_comparable_properties_node,
     mock_market_analysis_node,

@@ -6,15 +6,15 @@ Handles communication between PropertyValuation agent and other agents (e.g., Mo
 import json
 import uuid
 from typing import Dict, Any, Optional
-from state import PropertyValuationState
+from .state import PropertyValuationState
 try:
-    from graph import create_property_valuation_workflow
+    from .graph import create_property_valuation_workflow
 except ImportError:
     create_property_valuation_workflow = None
 
 # Try to import mock version as fallback
 try:
-    from mock_graph import create_mock_property_valuation_workflow
+    from .mock_graph import create_mock_property_valuation_workflow
 except ImportError:
     create_mock_property_valuation_workflow = None
 
