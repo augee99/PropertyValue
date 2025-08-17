@@ -3,7 +3,12 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 import json
 import random
-from .state import PropertyValuationState
+
+# Import with fallback for platform deployment
+try:
+    from .state import PropertyValuationState
+except ImportError:
+    from state import PropertyValuationState
 
 # Load environment variables from .env file
 try:

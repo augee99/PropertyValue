@@ -6,9 +6,16 @@ Supports both standalone operation and A2A communication
 import json
 import sys
 from typing import Dict, Any
-from .state import PropertyValuationState
-from .graph import create_property_valuation_workflow
-from .a2a_client import A2APropertyValuationClient, A2ACommunicationHandler
+
+# Import with fallback for platform deployment
+try:
+    from .state import PropertyValuationState
+    from .graph import create_property_valuation_workflow
+    from .a2a_client import A2APropertyValuationClient, A2ACommunicationHandler
+except ImportError:
+    from state import PropertyValuationState
+    from graph import create_property_valuation_workflow
+    from a2a_client import A2APropertyValuationClient, A2ACommunicationHandler
 
 def run_standalone_valuation(property_data: Dict[str, Any]) -> Dict[str, Any]:
     """Run property valuation as standalone agent"""

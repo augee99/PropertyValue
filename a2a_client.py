@@ -6,17 +6,29 @@ Handles communication between PropertyValuation agent and other agents (e.g., Mo
 import json
 import uuid
 from typing import Dict, Any, Optional
-from .state import PropertyValuationState
+
+# Import with fallback for platform deployment
+try:
+    from .state import PropertyValuationState
+except ImportError:
+    from state import PropertyValuationState
+
 try:
     from .graph import create_property_valuation_workflow
 except ImportError:
-    create_property_valuation_workflow = None
+    try:
+        from graph import create_property_valuation_workflow
+    except ImportError:
+        create_property_valuation_workflow = None
 
 # Try to import mock version as fallback
 try:
     from .mock_graph import create_mock_property_valuation_workflow
 except ImportError:
-    create_mock_property_valuation_workflow = None
+    try:
+        from mock_graph import create_mock_property_valuation_workflow
+    except ImportError:
+        create_mock_property_valuation_workflow = None
 
 class A2APropertyValuationClient:
     """Client for handling A2A communication with Property Valuation Agent"""

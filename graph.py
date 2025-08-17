@@ -1,13 +1,28 @@
 from langgraph.graph import StateGraph, END
-from .state import PropertyValuationState
-from .configuration import PropertyValuationConfiguration
-from .nodes import (
-    property_data_collection_node,
-    comparable_properties_node,
-    market_analysis_node,
-    final_valuation_node,
-    a2a_communication_node
-)
+
+# Import with fallback for platform deployment
+try:
+    # Try relative imports first (for package usage)
+    from .state import PropertyValuationState
+    from .configuration import PropertyValuationConfiguration
+    from .nodes import (
+        property_data_collection_node,
+        comparable_properties_node,
+        market_analysis_node,
+        final_valuation_node,
+        a2a_communication_node
+    )
+except ImportError:
+    # Fallback to absolute imports for platform deployment
+    from state import PropertyValuationState
+    from configuration import PropertyValuationConfiguration
+    from nodes import (
+        property_data_collection_node,
+        comparable_properties_node,
+        market_analysis_node,
+        final_valuation_node,
+        a2a_communication_node
+    )
 
 # Import for LangGraph SaaS platform compatibility
 from typing import Optional

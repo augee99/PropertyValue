@@ -4,14 +4,29 @@ Used for testing and demonstration without requiring API credentials
 """
 
 from langgraph.graph import StateGraph, END
-from .state import PropertyValuationState
-from .mock_nodes import (
-    mock_property_data_collection_node,
-    mock_comparable_properties_node,
-    mock_market_analysis_node,
-    mock_final_valuation_node,
-    mock_a2a_communication_node
-)
+
+# Import with fallback for platform deployment
+try:
+    from .state import PropertyValuationState
+except ImportError:
+    from state import PropertyValuationState
+
+try:
+    from .mock_nodes import (
+        mock_property_data_collection_node,
+        mock_comparable_properties_node,
+        mock_market_analysis_node,
+        mock_final_valuation_node,
+        mock_a2a_communication_node
+    )
+except ImportError:
+    from mock_nodes import (
+        mock_property_data_collection_node,
+        mock_comparable_properties_node,
+        mock_market_analysis_node,
+        mock_final_valuation_node,
+        mock_a2a_communication_node
+    )
 
 def create_mock_property_valuation_workflow():
     """Create the property valuation workflow using mock nodes"""
